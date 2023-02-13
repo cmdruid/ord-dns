@@ -1,0 +1,73 @@
+.qrcode {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 300px;
+  text-align: center;
+  position: relative;
+}
+
+.loading {
+  opacity: 50%;
+
+}
+
+.title {
+  color: white;
+  background-color: rgba(55, 55, 55, 0.85);
+  padding: 10px;
+  width: 100%;
+}
+
+.image {
+  width: 100%;
+}
+
+.button {
+  background-color: #ffdd00;
+  cursor: pointer;
+  color: #373737ff;
+  padding: 10px;
+  border-radius: 0 0 10px 10px;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #ffec6e;
+}
+
+@media print {
+  .button {
+    display: none;
+  }
+}
+
+.loading {
+  opacity: .5;
+  position: relative;
+}
+
+.spinner {
+  position: absolute;
+  display: block;
+  width: 128px;
+  height: 128px;
+  margin: auto;
+  top: 5.5rem;
+  z-index:10000000;
+  border-radius: 50%;
+  border: 12px solid rgb(0, 0, 0);
+  border-color: rgb(255, 255, 255) transparent rgb(255, 255, 255) transparent;
+  animation: spinner 1.2s linear infinite;
+}
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+

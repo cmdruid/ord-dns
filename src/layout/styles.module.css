@@ -1,0 +1,31 @@
+.container {
+  margin                    : 5%;
+  height                    : 80%;
+  display                   : flex;
+  flex-direction            : column;
+  align-items               : center;
+  text-align                : center;
+  font-family               : 'IBM Plex Mono', monospace;
+  background                : linear-gradient(90deg, rgba(50,52,55,1) 0%, rgba(50,52,55,1) 35%, rgba(36,38,40,1) 100%);
+  box-shadow                : #F3ED7B 5px 5px, #cbc63b 10px 10px, rgb(173, 157, 20) 15px 15px, #a0920c 20px 20px, #7a6e12 25px 25px;
+}
+
+.header h1 {
+  top                       : 0;
+  position                  : sticky;
+  width                     : 100%;
+  padding                   : 0.5rem;
+  color                     : white;
+  z-index                   : 1;
+}
+
+.main {
+  height                    : 100%;
+  padding                   : 1rem;
+}
+
+.footer {
+  width                     : 100%;
+  padding                   : 0.5rem;
+  color                      : #FFD502
+}
