@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import dayjs from 'dayjs'
 
 import { lookupInvoice }    from '@/lib/lnd'
-import { PubModel }         from '@/model/PubSchema'
+import { RecordModel }      from '@/model/Record'
 import { getCollection }    from '@/lib/controller'
 import { withSessionRoute } from '@/lib/sessions'
 import { MongoServerError } from 'mongodb'
@@ -34,7 +34,7 @@ async function handler(
     const { settled } = invoice
 
     if (settled) {
-      const pubkeys = await getCollection(PubModel),
+      const pubkeys = await getCollection(RecordModel),
             record  = await pubkeys.findOne({ name: nickname })
 
       if (record !== null) {

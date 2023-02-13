@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { normalizeParams }  from '@/lib/utils'
-import { PubModel }         from '@/model/PubSchema'
+import { RecordModel }      from '@/model/Record'
 import { getCollection }    from '@/lib/controller'
 import { config }           from '@/config'
 import { withSessionRoute } from '@/lib/sessions'
@@ -34,7 +34,7 @@ async function handler(
   }
 
   try {
-    const pubkeys = await getCollection(PubModel),
+    const pubkeys = await getCollection(RecordModel),
           record  = await pubkeys.findOne({ name: nickname })
 
     if (record !== null) {
