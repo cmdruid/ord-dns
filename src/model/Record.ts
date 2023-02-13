@@ -1,4 +1,25 @@
-/** src/model/slug.js */
+const EntrySchema = {
+  bsonType: "object",
+  title: "record",
+  properties: {
+    type: {
+      bsonType: "string",
+      maxLength: 12,
+    },
+    host: {
+      bsonType: "string",
+      maxLength: 12,
+    },
+    target: {
+      bsonType: "string",
+      maxLength: 128,
+    },
+    ttl: {
+      bsonType: "number",
+      maxLength: 12,
+    },
+  }
+}
 
 const RecordSchema = {
   /** Configure the collection's schema.
@@ -23,6 +44,11 @@ const RecordSchema = {
     },
     sig: {
       bsonType: [ "string" ]
+    },
+    records: {
+      bsonType: [ "array" ],
+      uniqueItems: true,
+      items: EntrySchema
     },
     relays: {
       bsonType: [ "string" ]
