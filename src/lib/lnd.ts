@@ -45,8 +45,8 @@ export async function cancelInvoice (hash : string) {
 }
 
 async function fetchEndpoint(endpoint : string, opt : RequestInit = {}) {
-  const hostname = process.env.INVOICE_HOSTNAME
-  const macaroon = process.env.INVOICE_MACAROON
+  const hostname = process.env.INVOICE_HOST
+  const macaroon = process.env.INVOICE_CRED
 
   if (hostname === undefined) {
     throw 'Environment varaible \'INVOICE_HOSTNAME\' is undefined!'

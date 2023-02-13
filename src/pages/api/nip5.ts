@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { getCollection }   from '@/lib/controller'
-import { PubModel }        from '@/model/PubSchema'
+import { RecordModel }     from '@/model/Record'
 import { normalizeParams } from '@/lib/utils'
 
 type nip5 = {
@@ -21,7 +21,7 @@ export default async function handler (
 
   try {
     // Fetch collection, and check if slug exists.
-    const pubkeys  = await getCollection(PubModel),
+    const pubkeys  = await getCollection(RecordModel),
           nickname = await pubkeys.findOne({ name })
 
     // If slug found, redirect to URL.

@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { getCollection }   from '@/lib/controller'
-import { PubModel }        from '@/model/PubSchema'
+import { RecordModel }     from '@/model/Record'
 import { normalizeParams } from '@/lib/utils'
 
 export default async function handler (
@@ -15,8 +15,8 @@ export default async function handler (
   }
 
   try {
-    const pubkeys = await getCollection(PubModel)
-    const record  = await pubkeys.findOne({ name: nickname })
+    const records = await getCollection(RecordModel)
+    const record  = await records.findOne({ name: nickname })
 
     if (record === null) {
       return res.status(200).json({ isAvailable: true, record: {} })

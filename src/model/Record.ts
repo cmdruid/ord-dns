@@ -1,6 +1,6 @@
 /** src/model/slug.js */
 
-const PubSchema = {
+const RecordSchema = {
   /** Configure the collection's schema.
    * https://docs.mongodb.com/manual/core/schema-validation/
    */
@@ -21,6 +21,9 @@ const PubSchema = {
       maxLength: 64,
       description: "Must be a string and is required."
     },
+    sig: {
+      bsonType: [ "string" ]
+    },
     relays: {
       bsonType: [ "string" ]
     },
@@ -39,9 +42,9 @@ const PubSchema = {
   }
 }
 
-export const PubModel = {
+export const RecordModel = {
   // Name of the collection.
-  name: 'pubkeys',
+  name: 'records',
 
   indexes: [
     /** Configure the collection's indexes.
@@ -54,7 +57,7 @@ export const PubModel = {
     }
   ],
   options: {
-    validator: { $jsonSchema: PubSchema },
+    validator: { $jsonSchema: RecordSchema },
     validationLevel: "strict",
     validationAction: "error"
   }
