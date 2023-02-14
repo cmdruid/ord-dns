@@ -51,11 +51,11 @@ export default function Payment (
 
   const submit = async () => {
     if (
-      store.nickname !== undefined &&
+      store.search !== undefined &&
       store.pubkey   !== undefined
     ) {
       const query = new URLSearchParams({
-        nickname : store.nickname,
+        search : store.search,
         pubkey   : store.pubkey,
         duration : store.duration
       })
@@ -75,11 +75,11 @@ export default function Payment (
 
   return (
     <div className={styles.gridContainer}>
-    {store.nickname && (store.isAvailable || store.pending.duration) && (
+    {store.search && (store.isAvailable || store.pending.duration) && (
       <div className={styles.leftSection}>
           <div className={styles.item}>
             <p className={styles.name}>              
-              {store.nickname}@{config.site_name}
+              {store.search}@{config.site_name}
             </p>
             <div className={styles.payment}>
               <label>Ownership Duration In Months</label>
@@ -117,12 +117,11 @@ export default function Payment (
       <div className={styles.rightSection}>
         <QRCode
           data={store.pending.receipt}
-          // label={`${store.nickname}@${config.site_name}`}
           loading={loading}
           clear={cancelInv}
         />
         {store.status === 'registered' && (
-          <p>You have registered {store.nickname}</p>
+          <p>You have registered {store.search}</p>
         )}
       </div>
     )}

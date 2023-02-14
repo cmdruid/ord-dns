@@ -23,7 +23,7 @@ async function handler(
       return res.status(200).json({ err: 'Session has expired!' })
     }
 
-    const { hash, nickname, pubkey, duration } = pending ?? {}
+    const { hash, ordinal, pubkey, duration } = pending ?? {}
 
     const invoice = await lookupInvoice(hash)
 
@@ -34,11 +34,11 @@ async function handler(
     const { settled } = invoice
 
     if (settled) {
-      const pubkeys = await getCollection(RecordModel),
-            record  = await pubkeys.findOne({ name: nickname })
+      const records = await getCollection(RecordModel),
+            record  = await records.findOne({ ordinal })
 
       if (record !== null) {
-        return res.status(200).json({ err: 'Account already exists!' })
+        return res.status(200).json({ err: 'Active record already exists!' })
       }
 
       const expires = Math.floor(
@@ -49,22 +49,22 @@ async function handler(
         / 1000
       )
 
-      const newAcct = {
+      const newRecord = {
         pubkey,
         expires,
+        ordinal,
         purchased : Math.floor(Date.now() / 1000),
         receipt   : invoice.r_hash,
-        name      : nickname,
         status    : 'active'
       }
 
-      const created = await pubkeys.insertOne(newAcct)
+      const created = await records.insertOne(newRecord)
 
       if (!created) throw new Error('Failed to save new record to db.')
 
       req.session.destroy()
 
-      return res.status(200).json({ settled: true, newAcct })
+      return res.status(200).json({ settled: true, newRecord })
     }
 
     return res.status(200).json({ settled: false })

@@ -8,15 +8,20 @@ export default async function handler (
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { nickname } = normalizeParams(req.query)
+  const { string } = normalizeParams(req.query)
 
-  if (nickname === undefined) {
+  if (string === undefined) {
     return res.status(404).end()
+  }
+
+  if (string.search(/^[0-9]+$/) !== 0) {
+    console.log('name detected')
+    // Need API to resolve name
   }
 
   try {
     const records = await getCollection(RecordModel)
-    const record  = await records.findOne({ name: nickname })
+    const record  = await records.findOne({ ordinal: })
 
     if (record === null) {
       return res.status(200).json({ isAvailable: true, record: {} })

@@ -28,12 +28,14 @@ interface StoreSchema {
 }
 
 const initialStore = {
-  nickname    : undefined,
+  search      : undefined,
+  type        : undefined,
   isAvailable : false,
   duration    : '1',
   loading     : {},
   pending     : {},
   record      : {},
+  results     : [],
   status      : 'new'
 }
 
@@ -83,8 +85,8 @@ export function StoreProvider (
           console.log('restored session:', session)
           if (session.pubkey !== undefined) {
             const value = { 
-              pending  : session, 
-              nickname : session.nickname,
+              pending  : session,
+              search   : session.search,
               pubkey   : session.pubkey,
               duration : session.duration,
               status   : 'restored' 
