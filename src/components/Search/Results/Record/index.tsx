@@ -1,5 +1,6 @@
 import { ReactElement } from 'react'
 import styles from './styles.module.css'
+import {FaShoppingCart} from 'react-icons/fa'
 
 export interface OrdinalRecord {
   output : string
@@ -41,8 +42,7 @@ export function Record (
           <span>{record.output}</span>
         </p>
         <div className={styles.claimWindow}>
-          <p className={styles.claimStatus}></p>
-          <button className={styles.viewBtn}>Purchase</button>
+          <button className={styles.viewBtn}><FaShoppingCart/> Purchase</button>
         </div>
         
       </div>

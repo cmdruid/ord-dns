@@ -17,16 +17,16 @@ export default function ResultsMeta (
 
   return (
     <div className={styles.container}>
-    <div className={styles.row}>
       <p className={styles.results}>
         <span>{store.results.length}</span>
         <span> {resultTxt(store.results.length)} found belonging to pubkey:</span>
       </p>
+    <div className={styles.row}>
       <p className={styles.pubkey}>
         <span>{store.pubkey}...</span>
         </p>
         <p className={styles.alignRight}>
-        <button><IoMdKey className={styles.icon}/>Authenticate</button>
+        <button className={styles.button}><IoMdKey className={styles.icon}/>Authenticate</button>
       </p>
     </div>
   </div>

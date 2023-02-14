@@ -33,6 +33,10 @@
   padding: 10px;
 }
 
+.button { 
+  width:  250px;
+}
+
 .container button {
   padding: 10px 31px;
   border-color: #ffd502;
