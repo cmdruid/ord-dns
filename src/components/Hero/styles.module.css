@@ -13,4 +13,7 @@
 
 .box {
   background-color: #ffd502;
+  width: 85%;
+  text-align: center;
+  margin: auto;
 }
