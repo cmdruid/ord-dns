@@ -42,7 +42,7 @@ export function Record (
         </p>
         <div className={styles.claimWindow}>
           <p className={styles.claimStatus}></p>
-          <button className={styles.viewBtn}>Details</button>
+          <button className={styles.viewBtn}>Purchase</button>
         </div>
         
       </div>

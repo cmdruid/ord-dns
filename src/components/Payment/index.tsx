@@ -76,7 +76,7 @@ export default function Payment (
 
   return (
     <div className={styles.gridContainer}>
-    {store.param && (store.isAvailable || store.pending.duration) && (
+    {store.param && 
       <div className={styles.leftSection}>
           <div className={styles.item}>
             <p className={styles.name}>              
@@ -108,7 +108,7 @@ export default function Payment (
           </div>
         </div>
       </div>
-    )}
+    }
     {store.payment_err && (
       <div className={styles.error}>
         <p>{store.payment_err}</p>

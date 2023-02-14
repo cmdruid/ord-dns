@@ -1,6 +1,7 @@
 import useStore from '@/hooks/useStore'
 import { ReactElement } from 'react'
 import styles from './styles.module.css'
+import { IoMdKey } from 'react-icons/io'
 
 interface Props {
   props ?: any
@@ -16,14 +17,18 @@ export default function ResultsMeta (
 
   return (
     <div className={styles.container}>
+    <div className={styles.row}>
       <p className={styles.results}>
         <span>{store.results.length}</span>
         <span> {resultTxt(store.results.length)} found belonging to pubkey:</span>
       </p>
       <p className={styles.pubkey}>
-        <span>{store.pubkey}</span>
+        <span>{store.pubkey}...</span>
+        </p>
+        <p className={styles.alignRight}>
+        <button><IoMdKey className={styles.icon}/>Authenticate</button>
       </p>
-      <button>Authenticate</button>
     </div>
+  </div>
   )
 }
