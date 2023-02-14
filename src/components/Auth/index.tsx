@@ -50,9 +50,9 @@ export default function Auth (
   return (
     <div className={styles.container}>
       { store.pubkey &&
-        <div className={styles.headerRight}>
+        <div className={styles.headerLeft}>
           <p>Authenticated as:</p>
-          <pre>{ store.pubkey }</pre>
+          <pre className={styles.key}>{ store.pubkey }...</pre>
         </div>
       }
       <div className={styles.headerRight}>
