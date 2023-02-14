@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import dayjs from 'dayjs'
 
 import { lookupInvoice }    from '@/lib/lnd'
-import { AccountModel }      from '@/model/Record'
+import { AccountModel }     from '@/model/Account'
 import { getCollection }    from '@/lib/controller'
 import { withSessionRoute } from '@/lib/sessions'
 import { MongoServerError } from 'mongodb'

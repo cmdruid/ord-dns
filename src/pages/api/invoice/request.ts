@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { normalizeParams }  from '@/lib/utils'
-import { AccountModel }      from '@/model/Record'
+import { AccountModel }     from '@/model/Account'
 import { getCollection }    from '@/lib/controller'
 import { config }           from '@/config'
 import { withSessionRoute } from '@/lib/sessions'
