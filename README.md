@@ -14,3 +14,5 @@ The goal is to have a one-click install web service that:
 This project is in heavy development.
 
 Stay tuned!
+
+bcrt1pshr5ktzh2vq7c37q6zqv08ksnz86782mw4vn3v74xhc6wsl8ceyq9kfruc

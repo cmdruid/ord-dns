@@ -26,7 +26,11 @@ export default async function handler (
       return res.status(403).end()
     }
 
-    const get
+    const { pubkey: pub } = getOrdinal(ordinal)
+
+    if (pub !== pubkey) {
+      return res.status(403).end()
+    }
 
     const accounts = await getCollection(AccountModel)
     const result   = await accounts.updateOne({ ordinal }, body)

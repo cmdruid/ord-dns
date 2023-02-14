@@ -23,7 +23,7 @@ export default function ResultsMeta (
       <p className={styles.pubkey}>
         <span>{store.pubkey}</span>
       </p>
-      <button>Claim Pubkey</button>
+      <button>Authenticate</button>
     </div>
   )
 }
