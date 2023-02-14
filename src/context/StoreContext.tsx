@@ -28,13 +28,14 @@ interface StoreSchema {
 }
 
 const initialStore = {
-  nickname    : undefined,
-  isAvailable : false,
-  duration    : '1',
-  loading     : {},
-  pending     : {},
-  record      : {},
-  status      : 'new'
+  param       : undefined,  // Search string.
+  type        : undefined,  // Search type.
+  duration    : '1',        // Subscription duration.
+  loading     : {},         // Load states.
+  pending     : {},         // Pending invoice.
+  record      : {},         // Current record.
+  results     : [],         // Current results.
+  status      : 'new'       // App status.
 }
 
 const context = createContext<StoreContext | undefined>(undefined)
@@ -83,8 +84,8 @@ export function StoreProvider (
           console.log('restored session:', session)
           if (session.pubkey !== undefined) {
             const value = { 
-              pending  : session, 
-              nickname : session.nickname,
+              pending  : session,
+              param    : session.ordinal,
               pubkey   : session.pubkey,
               duration : session.duration,
               status   : 'restored' 

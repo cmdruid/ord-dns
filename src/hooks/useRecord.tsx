@@ -6,14 +6,13 @@ export default function useLookup() {
   return async (param : string) => {
     update({ param, status: 'searching' })
     const host = window.location.origin
-    const res = await fetch(host + '/api/search?param=' + param)
+    const res = await fetch(host + '/api/record?param=' + param)
     if (res.ok) {
-      const { data, pubkey } = await res.json()
-      update({ pubkey, results: data, status: 'delivered' })
+      const { record } = await res.json()
+      update({ record, status: 'delivered' })
     } else {
       update({ 
-        pubkey: undefined,
-        results: {}, 
+        record: {},
         status: 'error' 
       })
     }

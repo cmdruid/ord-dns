@@ -1,0 +1,41 @@
+.container {
+  display: block;
+  margin: 1rem;
+}
+
+.box {
+  border: 1px solid #ffd502;
+  color: white;
+  text-align: left;
+  padding: 1rem;
+}
+
+
+.box p {
+  padding-bottom: 0.5rem;
+  width: 100%;
+}
+
+.box p label {
+  float: left;
+  text-align: right;
+  color: black;
+  background-color: white;
+  min-width: 5rem;
+  margin-right: 1rem;
+}
+
+.box p label::after {
+  content: ':';
+}
+
+.claimWindow {
+  display: flex;
+}
+
+.claimWindow button {
+  padding: 0.5rem;
+  width: 5rem;
+  background-color: #ffd502;
+}
+

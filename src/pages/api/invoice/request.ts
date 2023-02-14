@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { normalizeParams }  from '@/lib/utils'
-import { RecordModel }      from '@/model/Record'
+import { AccountModel }     from '@/model/Account'
 import { getCollection }    from '@/lib/controller'
 import { config }           from '@/config'
 import { withSessionRoute } from '@/lib/sessions'
@@ -23,10 +23,10 @@ async function handler(
   if (req.method !== 'GET') res.status(400).end()
 
   // Grab the slug and url from the post body.
-  const { nickname, pubkey, duration } = normalizeParams(req.query)
+  const { ordinal, pubkey, duration } = normalizeParams(req.query)
 
   if (
-    nickname === undefined ||
+    ordinal  === undefined ||
     pubkey   === undefined ||
     duration === undefined
   ) {
@@ -34,8 +34,8 @@ async function handler(
   }
 
   try {
-    const pubkeys = await getCollection(RecordModel),
-          record  = await pubkeys.findOne({ name: nickname })
+    const records = await getCollection(AccountModel),
+          record  = await records.findOne({ ordinal })
 
     if (record !== null) {
       return res.status(200).json({ err: 'Account already exists!' })
@@ -43,7 +43,7 @@ async function handler(
 
     const amount = config.sub_cost * Number(duration) * 1000
 
-    const memo = `${nickname}@${config.site_name} for ${duration} months.`
+    const memo = `DNS service for ordinal ${ordinal} x ${duration} months.`
 
     const response = await createInvoice({ amount, memo })
 
@@ -57,7 +57,7 @@ async function handler(
       return res.status(200).json({ err: 'Error fetching invoice from server!' })
     }
 
-    req.session.pending = { hash, amount, nickname, pubkey, duration, receipt: payment_request }
+    req.session.pending = { hash, amount, ordinal, pubkey, duration, receipt: payment_request }
 
     await req.session.save()
 

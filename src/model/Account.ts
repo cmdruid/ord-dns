@@ -1,4 +1,4 @@
-const EntrySchema = {
+const RecordSchema = {
   bsonType: "object",
   title: "record",
   properties: {
@@ -21,20 +21,25 @@ const EntrySchema = {
   }
 }
 
-const RecordSchema = {
+const AccountSchema = {
   /** Configure the collection's schema.
    * https://docs.mongodb.com/manual/core/schema-validation/
    */
   bsonType: "object",
 
   required: [ 
-    "name", "pubkey", "status", "purchased", "expires", "receipt" 
+    "ordinal", "pointer", "pubkey", "sig", "status", 
+    "purchased", "expires", "receipt" 
   ],
   
   properties: {
-    name: {
+    ordinal: {
+      bsonType: "number",
+      description: "Must be a number and is required."
+    },
+    pointer: {
       bsonType: "string",
-      maxLength: 32,
+      maxLength: 100,
       description: "Must be a string and is required."
     },
     pubkey: {
@@ -48,10 +53,7 @@ const RecordSchema = {
     records: {
       bsonType: [ "array" ],
       uniqueItems: true,
-      items: EntrySchema
-    },
-    relays: {
-      bsonType: [ "string" ]
+      items: RecordSchema
     },
     status: {
       bsonType: [ "string" ]
@@ -68,22 +70,27 @@ const RecordSchema = {
   }
 }
 
-export const RecordModel = {
+export const AccountModel = {
   // Name of the collection.
-  name: 'records',
+  name: 'accounts',
 
   indexes: [
     /** Configure the collection's indexes.
      * https://docs.mongodb.com/manual/reference/command/createIndexes
      */
     {
-      name: "_lookup_",
-      key: { name: 1, pubkey: 1, purchased: -1, expires: -1, invoice: 1 },
+      name: "_id_",
+      key: { ordinal: 1, pubkey: 1, invoice: 1 },
       unique: true
+    },
+    {
+      name: "_timestamp_",
+      key: { purchased: -1, expires: -1 },
+      unique: false
     }
   ],
   options: {
-    validator: { $jsonSchema: RecordSchema },
+    validator: { $jsonSchema: AccountSchema },
     validationLevel: "strict",
     validationAction: "error"
   }
