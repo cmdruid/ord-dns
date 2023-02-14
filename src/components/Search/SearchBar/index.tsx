@@ -10,15 +10,15 @@ export default function SearchBar () : ReactElement {
   const { store, set } = useStore()
   const lookup = useLookup()
 
-  const submit   = () : void => { lookup(store.search) }
-  const setInput = (value : string) : void => { set('search', value) }
+  const submit   = () : void => { lookup(store.param) }
+  const setInput = (value : string) : void => { set('param', value) }
 
   return (
     <div className={styles.container}>
       <div className={styles.bar}>
         <input 
           className={styles.input}
-          type="text" value={store.search}
+          type="text" value={store.param}
           onChange={(e) => { setInput(e.target.value) }}
           placeholder={'enter an address, txid:vout, or ordinal name|number to search ...'}
         />

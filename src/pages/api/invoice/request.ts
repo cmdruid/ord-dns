@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { normalizeParams }  from '@/lib/utils'
-import { RecordModel }      from '@/model/Record'
+import { AccountModel }      from '@/model/Record'
 import { getCollection }    from '@/lib/controller'
 import { config }           from '@/config'
 import { withSessionRoute } from '@/lib/sessions'
@@ -34,7 +34,7 @@ async function handler(
   }
 
   try {
-    const records = await getCollection(RecordModel),
+    const records = await getCollection(AccountModel),
           record  = await records.findOne({ ordinal })
 
     if (record !== null) {

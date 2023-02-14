@@ -4,8 +4,9 @@ import { BsCheckAll } from 'react-icons/bs'
 import { CgUnavailable } from 'react-icons/cg'
 import { ImSearch } from 'react-icons/im'
 
-
 import styles from './styles.module.css'
+import { OrdinalRecord, Record } from './Record'
+import ResultsMeta from './Meta'
 
 interface Props {
   props ?: any
@@ -20,7 +21,7 @@ export default function SearchResults (
   return (
     <div className={styles.container}>
       { store.status === 'searching' &&
-        <p className={styles.searching}><ImSearch className={styles.icon} />Searching {store.search} ...</p>
+        <p className={styles.searching}><ImSearch className={styles.icon} />Searching {store.param} ...</p>
       }
       { store.status === 'delivered' && store.record?.ordinal &&
         <>
@@ -34,11 +35,8 @@ export default function SearchResults (
       }
       { store.status === 'delivered' && store.results && store.results.length > 0 &&
         <>
-          <p className={styles.true}>
-              <BsCheckAll className={styles.icon} />
-              Available
-          </p>
-          <pre>{JSON.stringify(store.results, null, 2)}</pre>
+          <ResultsMeta />
+          { store.results.map((e : OrdinalRecord) => <Record key={ e.name } record={ e } />) }
         </>
       }
     </div>

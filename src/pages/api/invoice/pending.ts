@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import dayjs from 'dayjs'
 
 import { lookupInvoice }    from '@/lib/lnd'
-import { RecordModel }      from '@/model/Record'
+import { AccountModel }      from '@/model/Record'
 import { getCollection }    from '@/lib/controller'
 import { withSessionRoute } from '@/lib/sessions'
 import { MongoServerError } from 'mongodb'
@@ -34,7 +34,7 @@ async function handler(
     const { settled } = invoice
 
     if (settled) {
-      const records = await getCollection(RecordModel),
+      const records = await getCollection(AccountModel),
             record  = await records.findOne({ ordinal })
 
       if (record !== null) {

@@ -51,11 +51,11 @@ export default function Payment (
 
   const submit = async () => {
     if (
-      store.search !== undefined &&
-      store.pubkey   !== undefined
+      store.param  !== undefined &&
+      store.pubkey !== undefined
     ) {
       const query = new URLSearchParams({
-        search : store.search,
+        param    : store.param,
         pubkey   : store.pubkey,
         duration : store.duration
       })
@@ -65,7 +65,6 @@ export default function Payment (
       if (res.ok) {
         const { err, data } = await res.json()
         if (err) {
-          console.log(err)
           setInvoice('')
           update({ payment_err: err })
         } else { setInvoice(data) }
@@ -75,11 +74,11 @@ export default function Payment (
 
   return (
     <div className={styles.gridContainer}>
-    {store.search && (store.isAvailable || store.pending.duration) && (
+    {store.param && (store.isAvailable || store.pending.duration) && (
       <div className={styles.leftSection}>
           <div className={styles.item}>
             <p className={styles.name}>              
-              {store.search}@{config.site_name}
+              {store.param}@{config.site_name}
             </p>
             <div className={styles.payment}>
               <label>Ownership Duration In Months</label>
@@ -121,7 +120,7 @@ export default function Payment (
           clear={cancelInv}
         />
         {store.status === 'registered' && (
-          <p>You have registered {store.search}</p>
+          <p>You have registered {store.param}</p>
         )}
       </div>
     )}

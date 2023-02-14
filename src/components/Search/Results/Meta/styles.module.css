@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  color: white;
+}
+
+.results {
+  margin-bottom: 1rem;
+}
+
+.pubkey {
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  padding: 0.25rem;
+  color: black;
+  background-color: whitesmoke;
+}
+
+.container button {
+  padding: 0.5rem;
+  max-width: 9rem;
+  background-color: #ffd502;
+}

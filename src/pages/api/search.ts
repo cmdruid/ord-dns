@@ -18,24 +18,25 @@ export default async function handler (
     return res.status(404).end()
   }
 
+  let ret = { ok: false, data: undefined, pubkey: undefined }
+
   try {
     if (isAddress(param)) {
-      const ret = await lookupAddress(param)
-      return res.status(200).json({ ...ret, type: 'utxo' })
+      ret = await lookupAddress(param)
     }
 
     if (isUTXO(param)) {
       const [ txid, vout ] = param.split(':')
-      const ret = await lookupUTXO(txid, vout)
-      return res.status(200).json({ ...ret, type: 'utxo' })
+      ret = await lookupUTXO(txid, vout)
     }
 
     if (isOrdinal(param)) {
-      const ret = await lookupOrdinal(param)
-      return res.status(200).json({ ...ret, type: 'utxo' })
+      ret = await lookupOrdinal(param)
     }
 
-    return res.status(200).json({ ok: false, err: 'Format not recognized!'})
+    console.log(ret)
+
+    return res.status(200).json(ret)
   } catch(err) { 
     console.error(err)
     res.status(500).end() 

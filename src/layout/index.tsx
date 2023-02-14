@@ -15,7 +15,7 @@ export default function Layout (
 
       <Head>
         <title className={styles.pubHead}>pubkey.club</title>
-        <meta name="description" content="Grab a nickname, join the club." />
+        <meta name="description" content="F." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
