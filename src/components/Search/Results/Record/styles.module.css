@@ -1,11 +1,12 @@
 .container {
   display: block;
-  margin: 1rem;
+  margin-bottom: 20px;
 }
 
 .box {
   border: 1px solid #ffd502;
   color: white;
+  background-color: black;
   text-align: left;
   padding: 1rem;
 }
@@ -17,9 +18,8 @@
 
 .box p label {
   float: left;
-  text-align: right;
-  color: black;
-  background-color: white;
+  text-align: left;
+  color: #FFD502;
   min-width: 5rem;
   margin-right: 1rem;
 }
