@@ -3,6 +3,7 @@ import { ReactElement, useEffect, useState } from 'react'
 import qrcode       from 'qrcode'
 import Image        from 'next/image'
 import useClipboard from '@/hooks/useClipboard'
+import { MdClear }  from 'react-icons/md'
 
 import styles from './styles.module.css'
 
@@ -45,7 +46,6 @@ export default function QRCode({ clear, data, label, loading } : Props) : ReactE
           }
           <Image
             className = { styles.image }
-            style     = {{ borderRadius: label ? '' : '10px 10px 0 0' }}
             src       = { qrData }
             alt       = "QRCode"
             width     = { 300 }
@@ -56,12 +56,14 @@ export default function QRCode({ clear, data, label, loading } : Props) : ReactE
               className = { styles.copyBtn }
               onClick   = { () => setCopied() }
             >
-              { isCopied ? "Copied to clipboard!" : "Copy LNURL to Clipboard" }
+              { isCopied ? "Copied!" : "Copy LNURL" }
             </div>
             <div 
               className = { styles.clearBtn }
               onClick   = { () => clear() }
-            > Clear </div>
+            >
+              <MdClear /> Clear
+            </div>
           </div>
         </div>
       }
