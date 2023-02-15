@@ -61,9 +61,11 @@ export default function Payment (
       })
       const url = window.location.origin + '/api/invoice/request'
       const request = url + '?' + query.toString()
+      console.log(request, query)
       const res = await fetch(request)
       if (res.ok) {
         const { err, data } = await res.json()
+        console.log(err, data)
         if (err) {
           setInvoice('')
           update({ payment_err: err })
