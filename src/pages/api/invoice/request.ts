@@ -23,10 +23,10 @@ async function handler(
   if (req.method !== 'GET') res.status(400).end()
 
   // Grab the slug and url from the post body.
-  const { ordinal, pubkey, duration } = normalizeParams(req.query)
+  const { param, pubkey, duration } = normalizeParams(req.query)
 
   if (
-    ordinal  === undefined ||
+    param    === undefined ||
     pubkey   === undefined ||
     duration === undefined
   ) {
@@ -34,6 +34,7 @@ async function handler(
   }
 
   try {
+    const ordinal = param
     const records = await getCollection(AccountModel),
           record  = await records.findOne({ ordinal })
 
