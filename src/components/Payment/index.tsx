@@ -79,9 +79,11 @@ export default function Payment (
     {store.param && 
       <div className={styles.leftSection}>
           <div className={styles.item}>
-            <p className={styles.name}>              
-              {store.param}@{config.site_name}
-            </p>
+            { store.results?.length > 0 &&
+              <p className={styles.name}>              
+                {store.results[0].name}.ord
+              </p>
+            }
             <div className={styles.payment}>
               <label>Ownership Duration In Months</label>
               <input
@@ -109,11 +111,11 @@ export default function Payment (
         </div>
       </div>
     }
-    {store.payment_err && (
+    {/* {store.payment_err && (
       <div className={styles.error}>
         <p>{store.payment_err}</p>
       </div>
-    )}
+    )} */}
     {store.pending.receipt !== undefined && (
       <div className={styles.rightSection}>
         <QRCode

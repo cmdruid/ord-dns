@@ -14,10 +14,15 @@
 
 .results {
   text-align: left;
+  margin-bottom: 1rem;
 }
 
 .alignRight {
   text-align: right;
+}
+
+.row {
+  display: flex;
 }
 
 .pubkey {
@@ -30,6 +35,7 @@
   caret-shape: block;
   caret-color: #ffd502;
   padding: 10px;
+  overflow: hidden;
 }
 
 .button { 

@@ -23,8 +23,8 @@ export default function ResultsMeta (
       </p>
     <div className={styles.row}>
       <p className={styles.pubkey}>
-        <span>{store.pubkey}...</span>
-        </p>
+        <span>{store.pubkey.slice(0,40)}...</span>
+      </p>
         <p className={styles.alignRight}>
         <button className={styles.button}><IoMdKey className={styles.icon}/>Authenticate</button>
       </p>

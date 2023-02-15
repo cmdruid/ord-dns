@@ -19,12 +19,14 @@
 }
 
 .name {
-  color: #ffffff;
+  color: black;
+  background-color: white;
+  padding: 0.5rem;
   font-weight: 800;
   font-size: 15px;
-  padding-bottom: 30px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 1rem;
 }
 
 .quote {
@@ -36,6 +38,10 @@
   color: #ffffff;
   /* background-color: red; */
   padding: 0px 20px 5px 5px;
+}
+
+.payment input {
+  margin-top: 1rem;
 }
 
 .button {

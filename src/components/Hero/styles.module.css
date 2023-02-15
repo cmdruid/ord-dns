@@ -4,11 +4,13 @@
   width: 85%;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 2rem;
 }
 
 .header {
   font-size: 5rem;
   margin-top: 100px;
+  margin-bottom: 2rem;
 }
 
 .box {
