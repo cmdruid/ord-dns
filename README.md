@@ -15,4 +15,8 @@ This project is in heavy development.
 
 Stay tuned!
 
+{
+  "mnemonic": "monitor idea just faith enough window quit resemble token space bird hope"
+}
 
+bcrt1psjlqm4wn8tzc7apmvnpc06zs3tzesm55pkfc35g6cckwy45v3z6sae7ujf

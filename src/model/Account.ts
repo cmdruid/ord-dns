@@ -79,7 +79,7 @@ export const AccountModel = {
      * https://docs.mongodb.com/manual/reference/command/createIndexes
      */
     {
-      name: "_id_",
+      name: "_idx_",
       key: { ordinal: 1, pubkey: 1, invoice: 1 },
       unique: true
     },
