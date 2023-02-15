@@ -31,19 +31,7 @@ export default function Auth (
 
   const submit = async () => {
     if (window.nostr.getPublicKey !== undefined) {
-      const pubkey = await window.nostr.getPublicKey();
-      update({ pubkey });
-      toast.success('Authentication successful!', {
-        position: toast.POSITION.TOP_CENTER,
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        toastId: 'auth-toast',
-        theme: "colored",
-      });
+      update({ pubkey: undefined });
     }
   };
 
@@ -60,7 +48,6 @@ export default function Auth (
         <FaUserCircle />
         </button>
       </div>
-      <ToastContainer />
     </div>
   );
 }

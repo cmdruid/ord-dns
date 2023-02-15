@@ -9,11 +9,11 @@ export default function useLookup() {
     const res = await fetch(host + '/api/search?param=' + param)
     if (res.ok) {
       const { data, pubkey } = await res.json()
-      update({ pubkey, results: data, status: 'delivered' })
+      update({ reqkey: pubkey, results: data, status: 'delivered' })
     } else {
       update({ 
         pubkey: undefined,
-        results: {}, 
+        results: [], 
         status: 'error' 
       })
     }

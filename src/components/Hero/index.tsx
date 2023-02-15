@@ -13,7 +13,7 @@ export default function Hero (
     <div className={styles.container}>
       <h1 className={styles.header}>ordinary.space</h1>
       <div className={styles.box}>
-        <h2>Claim your ordinal and join the ordinary space.</h2>
+        <h2>Claim your ordinal and join the namespace.</h2>
       </div>
     </div>
   )

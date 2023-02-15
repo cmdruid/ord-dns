@@ -21,7 +21,7 @@ export default function SearchResults (
   return (
     <div className={styles.container}>
       { store.status === 'searching' &&
-        <p className={styles.searching}><ImSearch className={styles.icon} />Searching {store.param} ...</p>
+        <p className={styles.searching}><ImSearch className={styles.icon} />Searching ...</p>
       }
       { store.status === 'delivered' && store.record?.ordinal &&
         <>

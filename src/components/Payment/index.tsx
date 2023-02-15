@@ -76,7 +76,7 @@ export default function Payment (
 
   return (
     <div className={styles.gridContainer}>
-    {store.param && 
+    {store.results.length > 0 && 
       <div className={styles.leftSection}>
           <div className={styles.item}>
             { store.results?.length > 0 &&
@@ -116,7 +116,7 @@ export default function Payment (
         <p>{store.payment_err}</p>
       </div>
     )} */}
-    {store.pending.receipt !== undefined && (
+    {store.results.length > 0 && store.pending.receipt !== undefined && (
       <div className={styles.rightSection}>
         <QRCode
           data={store.pending.receipt}

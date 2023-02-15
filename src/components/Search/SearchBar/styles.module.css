@@ -6,6 +6,11 @@
   margin-right: auto;
 }
 
+.bar {
+  display: flex;
+  align-items: center;
+}
+
 .input {
   position: relative;
   background-color: #000000;
@@ -19,8 +24,9 @@
 }
 
 .button {
-  width: 15%;
+  width: 7rem;
   padding: 10px;
+  margin-top: 1px;
   border-color: #ffd502;
   background-color: #ffd502;
   font-weight: 900;

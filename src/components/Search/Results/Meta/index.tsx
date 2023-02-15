@@ -11,7 +11,16 @@ export default function ResultsMeta (
   { props } : Props
 ) : ReactElement {
 
-  const { store } = useStore()
+  const { store, update } = useStore()
+
+  const submit = async () => {
+    if (window.nostr.getPublicKey !== undefined) {
+      console.log('fired')
+      window.nostr.getPublicKey().then(pubkey => {
+        update({ pubkey })
+      }) 
+    }
+  };
 
   const resultTxt = (len : number) => len === 1 ? 'result' : 'results'
 
@@ -22,12 +31,21 @@ export default function ResultsMeta (
         <span> {resultTxt(store.results.length)} found belonging to pubkey:</span>
       </p>
     <div className={styles.row}>
-      <p className={styles.pubkey}>
-        <span>{store.pubkey.slice(0,40)}...</span>
-      </p>
-        <p className={styles.alignRight}>
-        <button className={styles.button}><IoMdKey className={styles.icon}/>Authenticate</button>
-      </p>
+      { store.reqkey !== undefined &&
+      <>
+        <p className={styles.pubkey}>
+          <span>{store.reqkey.slice(0,40)}...</span>
+        </p>
+          <p className={styles.alignRight}>
+          <button 
+            className={styles.button}
+            onClick={submit}
+          >
+            <IoMdKey className={styles.icon}/>Authenticate
+          </button>
+        </p>
+        </>
+      }
     </div>
   </div>
   )
